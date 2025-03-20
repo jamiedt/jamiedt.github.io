@@ -18,9 +18,13 @@ section {
 
 p {
   color: azure;
+  font-family: "Bytesized", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
 }
 .blueify {
-  color: blue;
+  color: rgb(50, 170, 134);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
