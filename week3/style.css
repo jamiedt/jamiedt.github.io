@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+}
+
+h1 {
+  color: red;
+  font-size: 3rem;
+}
+h2,
+h3 {
+  color: palegoldenrod;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+section {
+  text-align: center;
+}
+
+p {
+  color: azure;
+}
+.blueify {
+  color: blue;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+#outcome {
+  color: firebrick;
+}
