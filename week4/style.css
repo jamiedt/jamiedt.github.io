@@ -1,0 +1,24 @@
+body {
+  text-align: center;
+  background-color: darkslateblue;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+p {
+  width: 400px;
+  border: 1px solid cyan;
+  /* margin 0 auto makes things horizontally centred */
+  margin: 0 auto;
+  /* height: 200px; dont use heigth try using minheight or maxheight*/
+  padding: 1rem;
+}
+
+span {
+  color: aqua;
+  /* display: block; */
+  display: none;
+}
