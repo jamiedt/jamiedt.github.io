@@ -52,18 +52,6 @@ p {
   border-radius: 25px 0px 25px 25px;
 }
 
-.outercentre {
-  width: fit-content;
-  border: 10px solid #ffffff;
-  border-radius: 40px;
-  min-height: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 30px;
-  padding: 10px;
-}
-
 .outerleft {
   max-width: 75%;
   border: 10px solid #ffffff;
@@ -84,13 +72,29 @@ p {
   border: 10px solid #ffffff;
   border-radius: 40px;
   min-height: 100px;
-  display: flex-end;
+  display: flex;
   justify-content: end;
   align-items: end;
   align-self: end;
   flex-direction: column;
   flex-wrap: wrap;
   text-align: right;
+  gap: 10px;
+  margin: 30px;
+  padding: 10px;
+}
+
+.outercentre {
+  width: fit-content;
+  border: 10px solid #ffffff;
+  border-radius: 40px;
+  min-height: 100px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
   gap: 10px;
   margin: 30px;
   padding: 10px;
