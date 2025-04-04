@@ -5,9 +5,9 @@ body {
     180deg,
     #ffb8fd 0%,
     #88d4ff 25%,
-    #2d73f4 50%,
-    #ffa632 75%,
-    #190337 100%
+    #4b89fc 50%,
+    #fcad46 75%,
+    #ffeeb2 100%
   );
   /* setting up flex box */
   display: flex;
