@@ -1,0 +1,17 @@
+audio {
+  display: block;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 20px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  margin: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(2);
+}
