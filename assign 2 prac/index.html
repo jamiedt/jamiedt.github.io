@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time to Study?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Circle button -->
+    <button id="studyButton" class="circle-btn">Time to study?</button>
+
+    <!-- Animated color circles -->
+    <div id="colorCircles" class="color-circles"></div>
+
+    <!-- Menu for selecting study time -->
+    <div id="studyTimeMenu" class="study-time-menu">
+      <p>How long do you want to study for?</p>
+      <button id="decreaseTime" class="time-btn">-</button>
+      <span id="studyTime">25</span> minutes
+      <button id="increaseTime" class="time-btn">+</button>
+      <button id="startStudy" class="start-btn">Start Study</button>
+    </div>
+
+    <!-- Audio player -->
+    <div id="audioPlayer" class="audio-player">
+      <select id="songSelector">
+        <option value="song1">Song 1</option>
+        <option value="song2">Song 2</option>
+        <option value="song3">Song 3</option>
+      </select>
+      <audio id="audio" controls>
+        <source id="audioSource" src="song1.mp3" type="audio/mp3" />
+      </audio>
+      <button id="muteButton" class="mute-btn">Mute</button>
+      <p id="timerDisplay">Time Left: 25:00</p>
+      <button id="stopStudyButton" class="stop-btn">Stop Study</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

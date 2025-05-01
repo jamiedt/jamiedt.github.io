@@ -1,21 +1,45 @@
-const video = document.querySelector("#custom-video-player");
-const playPauseBtn = document.querySelector("#play-pause-btn");
-const playPauseImg = document.querySelector("#play-pause-img");
-const progressBar = document.querySelector("#progress-bar-fill");
-video.removeAttribute("controls");
-// playPauseBtn.addEventListener("click", togglePlayPause);
-video.addEventListener("timeupdate", updateProgressBar);
-function togglePlayPause() {
-  if (video.paused || video.ended) {
-    video.play();
-    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v1.png";
-  } else {
-    video.pause();
-    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
+function startTransition() {
+  const circle = document.getElementById("circleOverlay");
+  const mainContent = document.getElementById("mainContent");
+  const startPage = document.getElementById("startPage");
+
+  // Animate circle to cover the whole screen
+  circle.style.width = "3000px";
+  circle.style.height = "3000px";
+
+  // Wait for the animation to complete
+  setTimeout(() => {
+    startPage.style.display = "none";
+    mainContent.style.display = "flex";
+    void mainContent.offsetWidth;
+    mainContent.style.transform = "translateY(0)";
+    mainContent.style.opacity = "1";
+  }, 1000); // match the CSS transition duration
+}
+
+// Handle button click to trigger animation
+studyButton.addEventListener("click", () => {
+  // Hide the button and show the menu after animation
+  studyButton.style.display = "none";
+  setTimeout(() => {
+    studyTimeMenu.style.display = "block";
+  }, 2000);
+
+  // Create multiple random color circles
+  for (let i = 0; i < 10; i++) {
+    createColorCircle();
   }
-}
-function updateProgressBar() {
-  const value = (video.currentTime / video.duration) * 100;
-  progressBar.style.width = value + "%";
-}
-// Add other functionalities here
+});
+
+// Update study time when user clicks +/- buttons
+decreaseTimeButton.addEventListener("click", () => {
+  if (studyTime > 5) {
+    studyTime -= 5;
+    studyTimeDisplay.textContent = studyTime;
+  }
+});
+
+increaseTimeButton.addEventListener("click", () => {
+  studyTime += 5;
+  studyTimeDisplay.textContent = studyTime;
+});
