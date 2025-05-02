@@ -28,14 +28,6 @@ body {
   z-index: 1;
 }
 
-/* icons recognition alwasy in bottom left */
-#footer {
-  color: black;
-  bottom: 15px;
-  left: 15px;
-  position: fixed;
-}
-
 #study {
   padding: 2em 2em;
   width: 15rem;
@@ -48,6 +40,14 @@ body {
   color: #fff;
   /* radius on the buttons make edges less harsh */
   border-radius: 50%;
+}
+
+/* icons recognition alwasy in bottom left */
+#footer {
+  color: black;
+  bottom: 15px;
+  left: 15px;
+  position: fixed;
 }
 
 button {
