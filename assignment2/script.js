@@ -1,3 +1,6 @@
+// when study button is clicked, i learned that you dont have to name functions but you
+// can simply run them everytime a button is clicked and have it all contained within
+// the event listener
 document.getElementById("study").addEventListener("click", () => {
   const circle = document.getElementById("circleOverlay");
   const mainContent = document.getElementById("mainContent");
@@ -159,6 +162,7 @@ document.getElementById("muteUnmute").addEventListener("click", () => {
     document.getElementById("muteUnmute").style.backgroundImage =
       "url(img/unmute.png)";
     audio.play();
+    // popup that shows when youre playing music
     document.getElementById("nowPlaying").textContent =
       "Now playing: Lo-Fi Beats";
   }
