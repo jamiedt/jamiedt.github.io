@@ -4,26 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Timer</title>
-    <!-- add the font family of your choice -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <!-- Header Section -->
     <div id="startPage">
-      <button id="study" onclick="startTransition()">Time to Study?</button>
+      <button id="study">Time to Study?</button>
     </div>
-
     <div id="circleOverlay"></div>
-
     <div id="mainContent">
-      <div id="studyTimeMenu" class="study-time-menu">
-        <p>How long do you want to study for?</p>
-        <button id="decreaseTime" class="time-btn">-</button>
-        <span id="studyTime">25</span> minutes
-        <button id="increaseTime" class="time-btn">+</button>
-        <button id="startStudy" class="start-btn">Start Study</button>
+      <div id="studyTimeSelector">
+        <p>How long would you like to study for?</p>
+        <br />
+        <div class="time-selector">
+          <button id="decreaseTime">-</button>
+          <span id="studyTime">25</span> minutes
+          <button id="increaseTime">+</button>
+        </div>
+        <br />
+        <button id="startStudy">Start Study</button>
+      </div>
+      <div id="timerScreen">
+        <h1 id="nowPlaying">Now playing: Lo-Fi Beats</h1>
+        <audio id="studyAudio" loop>
+          <source src="mus/lofi.mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="timer-container">
+          <svg class="progress-ring" width="200" height="200">
+            <circle class="progress-ring__circle" r="90" cx="100" cy="100" />
+          </svg>
+          <div class="time-display" id="timeRemaining">25:00</div>
+          <button id="backBtn"></button>
+          <button id="pausePlayBtn"></button>
+          <button id="muteUnmute"></button>
+        </div>
       </div>
     </div>
   </body>

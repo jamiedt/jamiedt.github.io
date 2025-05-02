@@ -1,28 +1,18 @@
-:root {
-  --primary-bg-color: #000329;
-  --text-color: #333;
-  --main-bg-color: #333;
-  --main-text-color: #fff;
-  --main-btn-bg-color: #938989;
-}
-
-body,
-h1,
-p,
-ul {
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: "Arial", sans-serif;
-  background-color: var(--primary-bg-color);
-  color: var(--text-color);
+  /* /* used azaret mono as a font as it is sleek and not super in your face */
+  font-family: "Azeret Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  /* made sure to make overflow hidden so user cant scroll around the screen accidentally */
+  overflow: hidden;
 }
 
 #startPage {
@@ -31,26 +21,44 @@ body {
   height: 100%;
   background: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  /* z index lets me have differnet objects on the screen at the same time on different layers */
+  z-index: 1;
+}
+
+/* icons recognition alwasy in bottom left */
+#footer {
+  color: black;
+  bottom: 15px;
+  left: 15px;
+  position: fixed;
 }
 
 #study {
   padding: 2em 2em;
   width: 15rem;
   height: 15rem;
-  font-size: 1.5em;
-  cursor: pointer;
+  font-size: 1.7em;
+  font-weight: bold;
   border: none;
-  background: #333;
+  /* nice dark green background evokes a sense of tranquility */
+  background: #003c2d;
   color: #fff;
+  /* radius on the buttons make edges less harsh */
   border-radius: 50%;
-  transition: background 0.3s ease;
 }
 
-#study:hover {
-  background: #555;
+button {
+  /* transition makes hovering over buttons smooth and intuitive by scaling them slowly */
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  /* pointer lets users know they can interact */
+  cursor: pointer;
 }
 
 #circleOverlay {
@@ -59,54 +67,142 @@ body {
   left: 50%;
   width: 0;
   height: 0;
-  background: #000329;
+  /* darker backgorund is less distracting */
+  background: #003c2d;
   border-radius: 50%;
+  /* makes circel center when transitioning */
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 2;
   transition: width 3s ease, height 3s ease;
 }
 
 #mainContent {
-  font-family: "Arial", sans-serif;
-  background-color: var(--primary-bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  line-height: 2rem;
   display: none;
   flex-direction: column;
-  align-items: center;
+  align-items: space-between;
   justify-content: space-between;
-  z-index: 4;
+  z-index: 3;
   opacity: 0;
+  /* lets content fall from above */
   transform: translateY(-100px);
-  transition: transform 3s ease, opacity 3s ease;
+  transition: transform 2s ease, opacity 2s ease;
 }
 
-.study-time-menu {
+#studyTimeSelector {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  opacity: 1;
+  /* transition from goign bcak and forth */
+  transition: opacity 0.5s ease;
+}
+
+.time-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* creates 20px gap between row elements */
+  gap: 20px;
+}
+
+#decreaseTime {
+  font-weight: bold;
+  width: 2rem;
+  height: 2rem;
+  /* keeping the circle theme */
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  color: black;
+}
+
+#increaseTime {
+  font-weight: bold;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  color: black;
+}
+
+#startStudy {
+  font-weight: bold;
+  width: 11rem;
+  height: 2rem;
+  /* couldn tmake button circle but has rounded edges */
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: black;
+}
+
+#timerScreen {
   display: none;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  /* stacks veritcally */
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.time-btn {
-  font-size: 1.5em;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5em;
-  cursor: pointer;
+.timer-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
 }
 
-.start-btn {
-  font-size: 1.2em;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 1em;
-  cursor: pointer;
+.progress-ring {
+  /* makes timer start at top instead of right */
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  stroke: #ffffff;
+  stroke-width: 15;
+  fill: transparent;
+  /* makes smooth transition around the ring */
+  transition: stroke-dashoffset 1s linear;
+  /* rounded end looks smooth */
+  stroke-linecap: round;
+}
+
+.time-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#pausePlayBtn {
   margin-top: 20px;
+  width: 45px;
+  height: 45px;
+  background: url(img/pause.png) center/cover;
+  border-radius: 50%;
+  border: none;
+}
+
+#backBtn {
+  margin-top: 20px;
+  width: 45px;
+  height: 45px;
+  background: url(img/back.png) center/cover;
+  border-radius: 50%;
+  border: none;
+}
+
+#muteUnmute {
+  margin-top: 20px;
+  width: 45px;
+  height: 45px;
+  background: url(img/unmute.png) center/cover;
+  border-radius: 50%;
+  border: none;
 }
