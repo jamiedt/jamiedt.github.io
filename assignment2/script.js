@@ -63,7 +63,7 @@ document.getElementById("startStudy").addEventListener("click", () => {
   }, 500);
 
   // setup timer circle
-  const pcircle = document.querySelector(".progress-ring__circle");
+  const pcircle = document.querySelector(".progressRingCircle");
   const radius = pcircle.r.baseVal.value;
   // circle maths
   const circumference = 2 * Math.PI * radius;
@@ -121,6 +121,9 @@ document.getElementById("pausePlayBtn").addEventListener("click", () => {
   } else {
     document.getElementById("pausePlayBtn").style.backgroundImage =
       "url(img/pause.png)";
+    document.getElementById("timeRemaining").textContent = `${minutes}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   }
 });
 
