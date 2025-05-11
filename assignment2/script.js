@@ -42,6 +42,8 @@ let totalSeconds;
 let timeRemaining;
 let isPaused = false;
 let audioOn = true;
+let minutes = 0;
+let seconds = 0;
 
 document.getElementById("startStudy").addEventListener("click", () => {
   // calculate seconds
@@ -78,10 +80,12 @@ document.getElementById("startStudy").addEventListener("click", () => {
   }
   // updates clock (i had help online to do this)
   function updateDisplay() {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
+    minutes = Math.floor(timeRemaining / 60);
+    seconds = timeRemaining % 60;
     document.getElementById("timeRemaining").textContent = `${minutes}:${seconds
       .toString()
+      // makes sure when timer gets down to 0 - 9 seconds there is a 0 in front of all the numbers
+      // like a normal alarm clock (0:00 rather than 0:0)
       .padStart(2, "0")}`;
 
     const percent = (timeRemaining / totalSeconds) * 100;
