@@ -51,10 +51,14 @@ function startDragGame(inputButton) {
   function stopTimer() {
     clearInterval(myTimer);
   }
+  // makes the first set of targets appear
   firstScaleTarget();
+  // after 20 seconds the game ends and goes to score screen by removing ekements
   setTimeout(() => {
+    // stops timer to be reset
     stopTimer();
     timer.innerHTML = "Time Remaining: 20s";
+    // clears up the screen for only the necessary text
     target.style.display = "none";
     dragBox.style.display = "none";
     timer.style.display = "none";
@@ -73,12 +77,14 @@ function firstScaleTarget() {
   // target animation
   target.style.transition = "none";
   target.style.transform = "scale(0)";
+  // puts target randomly within the window without covering text at top
   target.style.left = Math.random() * (window.innerWidth - 50) + "px";
   target.style.top = Math.random() * (window.innerHeight - 80) + 30 + "px";
   target.offsetHeight;
   target.style.transition = "transform 1s ease-in-out";
   target.style.transform = "scale(1)";
-  // dragBox animation
+  // dragBox animation (exactly same as target animation: in future could create a function
+  // for this that can be called by the click listener and pass through each elemnt)
   dragBox.style.transition = "none";
   dragBox.style.transform = "scale(0)";
   dragBox.style.left = Math.random() * (window.innerWidth - 50) + "px";
@@ -89,6 +95,9 @@ function firstScaleTarget() {
 }
 
 function moveScaleTarget() {
+  // adds a score for every time the target is clicked (also could have probably made these
+  // two functions into the same function and add a conditional statement for whether
+  // the start button is clicked or the target is clicked to add score)
   score += 1;
   document.getElementById("score").textContent = "Score: " + score;
   // target animation

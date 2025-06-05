@@ -1,3 +1,4 @@
+// event listeners for all the start buttons to redirect user to the relevant page
 const clickButton = document.getElementById("clickButton");
 clickButton.addEventListener("click", function () {
   location.href = "click.html";
@@ -11,9 +12,4 @@ dragButton.addEventListener("click", function () {
 const hoverButton = document.getElementById("hoverButton");
 hoverButton.addEventListener("click", function () {
   location.href = "hover.html";
-});
-
-const backButton = document.getElementById("backButton");
-backButton.addEventListener("click", function () {
-  location.href = "index.html";
 });
