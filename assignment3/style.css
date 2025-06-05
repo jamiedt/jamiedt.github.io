@@ -1,0 +1,307 @@
+body {
+  /* stops users from scrolling around the screen */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  /* imported google fonts to use for design */
+  font-family: "Nabla", system-ui;
+  text-align: center;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "EDPT" 100, "EHLT" 12;
+}
+
+p {
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+#buttonContainer {
+  width: 400px;
+  display: flex;
+  /* spaces buttons out  evenly */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  background-color: #7d7d7d;
+  color: #fff;
+  /* turns buttons into circles */
+  border-radius: 50%;
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+}
+
+button:hover {
+  /* makes buttons change colour slightly and show grab 
+  cursor when hovered to create visual interaction */
+  outline: 5px solid rgb(255, 255, 255);
+  cursor: grab;
+}
+
+/* used the colours from the font to make design more coherent */
+#clickButton:hover {
+  /* changes outline of each button with its respective colour when hovered */
+  outline: 5px solid #ffc200;
+}
+
+#dragButton:hover {
+  outline: 5px solid #ff7300;
+}
+
+#hoverButton:hover {
+  outline: 5px solid #ff2a00;
+}
+
+#escapeText {
+  /* makes it so text is in the same spot no matter what other elements
+  there are or how big or small the browser is */
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+#target {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  /* added z index so that for drag game the draggable target is always above 
+  the target dropzone cos otherwise it goes beneath and is unclickable */
+  z-index: 2;
+}
+
+#target.click {
+  /* changes cursor to a crosshair when hovering click target */
+  cursor: crosshair;
+  background-color: #ffc200;
+}
+
+#target.drag {
+  cursor: grab;
+  background-color: #ff7300;
+}
+
+#target.hover {
+  background-color: #ff2a00;
+}
+
+/* i seperated the targets by shape because some transitions dont work for all shapes
+e.g. the triangle has no background colour and uses border colours instead so i made
+the triangle target its own set of animations that work. i created all my shapes
+within css rather than using photos so that i could easily do animations with colour changes*/
+#target.circle {
+  border-radius: 50%;
+}
+
+#target.square {
+  border-radius: 0%;
+}
+
+#target.triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 44px solid #ff2a00;
+  background: none;
+  border-radius: 0;
+}
+
+#target.circle.hovering {
+  animation: hoverScale 1s ease-in-out forwards;
+}
+
+#target.square.hovering {
+  animation: hoverScale 1s ease-in-out forwards;
+}
+
+#target.triangle.hovering {
+  animation: hoverScaleTriangle 1s ease-in-out forwards;
+}
+
+#target.circle.wrong {
+  animation: wrongShake 0.5s ease-in-out forwards;
+}
+
+#target.circle.wrongColor {
+  background-color: #5e5e5e;
+}
+
+#target.square.wrong {
+  animation: wrongShake 0.5s ease-in-out forwards;
+}
+
+#target.square.wrongColor {
+  background-color: #5e5e5e;
+}
+
+#target.triangle.wrong {
+  animation: wrongShakeTriangle 0.5s ease-in-out forwards;
+}
+
+#target.triangle.wrongColor {
+  border-bottom-color: #5e5e5e;
+}
+
+/* animation for when hover is successful to give user a visual cue that their hover is working
+i made the target get bigger cos the cursor is the same size as the taret so it was hard to see)*/
+@keyframes hoverScale {
+  0% {
+  }
+  20% {
+    background-color: rgb(0, 0, 0);
+  }
+  40% {
+    background-color: #ff2a00;
+  }
+  60% {
+    background-color: rgb(0, 0, 0);
+  }
+  80% {
+    background-color: #ff2a00;
+  }
+  100% {
+    transform: scale(1.5);
+    background-color: rgb(0, 0, 0);
+  }
+}
+
+@keyframes hoverScaleTriangle {
+  0% {
+  }
+  20% {
+    border-bottom-color: rgb(0, 0, 0);
+  }
+  40% {
+    border-bottom-color: #ff2a00;
+  }
+  60% {
+    border-bottom-color: rgb(0, 0, 0);
+  }
+  80% {
+    border-bottom-color: #ff2a00;
+  }
+  100% {
+    transform: scale(1.5);
+    border-bottom-color: rgb(0, 0, 0);
+  }
+}
+
+/* animation for when hover is wrong like a shaking head motion */
+@keyframes wrongShake {
+  0% {
+    background-color: #5e5e5e;
+  }
+  20% {
+    background-color: #5e5e5e;
+    transform: translateX(20px);
+  }
+  40% {
+    background-color: #5e5e5e;
+    transform: translateX(-20px);
+  }
+  60% {
+    background-color: #5e5e5e;
+    transform: translateX(10px);
+  }
+  80% {
+    background-color: #5e5e5e;
+    transform: translateX(-10px);
+  }
+  100% {
+    background-color: #5e5e5e;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes wrongShakeTriangle {
+  0% {
+    border-bottom-color: #5e5e5e;
+  }
+  20% {
+    border-bottom-color: #5e5e5e;
+    transform: translateX(20px);
+  }
+  40% {
+    border-bottom-color: #5e5e5e;
+    transform: translateX(-20px);
+  }
+  60% {
+    border-bottom-color: #5e5e5e;
+    transform: translateX(10px);
+  }
+  80% {
+    border-bottom-color: #5e5e5e;
+    transform: translateX(-10px);
+  }
+  100% {
+    border-bottom-color: #5e5e5e;
+    transform: translateX(0px);
+  }
+}
+
+#score {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  text-align: center;
+}
+
+/* when game is over moves score to centre and makes it larger */
+#score.scaled {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(2);
+  top: 40%;
+  left: 50%;
+}
+
+#timer {
+  position: absolute;
+  top: 5px;
+}
+
+#playAgainButton {
+  display: none;
+  margin-top: 30px;
+}
+
+/* creates the outline for where the target should be dragged to */
+#dragBox {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border: dashed;
+  border-radius: 50%;
+  border-width: 3px;
+  border-color: #7d7d7d;
+  cursor: default;
+  transform: scale(0);
+  z-index: 1;
+}
+
+#hint {
+  position: absolute;
+  bottom: 5px;
+}
