@@ -1,0 +1,167 @@
+body {
+  font-family: "Lexend", system-ui;
+  background: #4c348e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: "Irish Grover", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+button {
+  font-family: "Lexend", system-ui;
+  margin: 8px;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 150px;
+  background: #ffbb00;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s, scale 0.2s;
+}
+
+button:hover {
+  background: #ffda75;
+  scale: 1.1;
+}
+
+#one {
+  background-color: #7497ff;
+  transition: box-shadow 0.2s, scale 0.2s;
+}
+
+#one:hover {
+  box-shadow: 0px 0px 10px #7497ff;
+}
+
+#two {
+  background-color: #ba79ff;
+  transition: box-shadow 0.2s, scale 0.2s;
+}
+
+#one:hover {
+  box-shadow: 0px 0px 10px #7497ff;
+}
+
+#three {
+  background-color: #ff50dc;
+  transition: box-shadow 0.2s, scale 0.2s;
+}
+
+#one:hover {
+  box-shadow: 0px 0px 10px #7497ff;
+}
+/* Responsive board */
+#game-board {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  width: 90vw;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 338.9 / 435.8;
+  perspective: 1000px;
+  cursor: pointer;
+  max-height: calc(120vh / var(--rows)); /* scale to screen height */
+}
+
+/* ... previous styles remain unchanged ... */
+
+.card-front {
+  background: transparent url("img/back.png") center/cover no-repeat;
+  transition: transform 0.2s;
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
+.card:hover .card-front {
+  animation: wiggle 0.5s ease-in-out;
+  transform: rotate(3deg);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: #ffffff00 url("img/back.png") center/cover no-repeat;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+#win-message {
+  margin-top: 15px;
+  font-size: 1.5rem;
+  display: none;
+}
+
+.controls {
+  margin-top: 15px;
+}

@@ -28,10 +28,11 @@ button {
   color: #fff;
   /* turns buttons into circles */
   border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
 }
 
 button:hover {
-  background-color: rgb(73, 73, 73);
+  transform: scale(1.1);
   cursor: grab;
 }
 
@@ -74,6 +75,27 @@ button:hover {
   top: 5px;
 }
 
+#startButton {
+  transform: scale(0);
+}
+
+#startButton.show {
+  transform: scale(1);
+}
+
+#startButton.hover:hover {
+  transform: scale(1.1);
+}
+
 #playAgainButton {
-  display: none;
+  transform: scale(0);
+  transition: transform 1s ease-in-out;
+}
+
+#playAgainButton.show {
+  transform: scale(1);
+}
+
+#playAgainButton.hover:hover {
+  transform: scale(1.1);
 }
