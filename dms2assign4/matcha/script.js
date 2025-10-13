@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     titleScreen.style.display = "none";
     gameScreen.style.display = "block";
-    modeTitle.textContent = `Mode: ${cols} x ${rows}`;
 
     board.innerHTML = "";
     winMessage.style.display = "none";

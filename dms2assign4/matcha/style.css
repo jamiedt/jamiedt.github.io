@@ -53,8 +53,8 @@ button:hover {
   transition: box-shadow 0.2s, scale 0.2s;
 }
 
-#one:hover {
-  box-shadow: 0px 0px 10px #7497ff;
+#two:hover {
+  box-shadow: 0px 0px 10px #ba79ff;
 }
 
 #three {
@@ -62,8 +62,8 @@ button:hover {
   transition: box-shadow 0.2s, scale 0.2s;
 }
 
-#one:hover {
-  box-shadow: 0px 0px 10px #7497ff;
+#three:hover {
+  box-shadow: 0px 0px 10px #ff50dc;
 }
 /* Responsive board */
 #game-board {
