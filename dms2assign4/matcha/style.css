@@ -88,7 +88,8 @@ button:hover {
 /* ... previous styles remain unchanged ... */
 
 .card-front {
-  background: transparent url("img/back.png") center/cover no-repeat;
+  background: transparent url("dms2assign4/matcha/img/back.png") center/cover
+    no-repeat;
   transition: transform 0.2s;
 }
 
@@ -186,11 +187,11 @@ button:hover {
   }
 
   #game-board {
-    width: 100vw; /* full width */
+    width: 90vw; /* full width */
     max-width: none;
     gap: 4px; /* smaller gaps so cards fit nicely */
     margin: 10; /* remove side margins */
-    padding: 5px 0 10px;
+    padding: 0px 0 0px;
   }
 
   .card {
