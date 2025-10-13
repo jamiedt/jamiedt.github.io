@@ -70,7 +70,7 @@ button:hover {
   display: grid;
   gap: 10px;
   justify-content: center;
-  width: 90vw;
+  width: 60vw;
   max-width: 1200px;
   margin: 20px auto;
 }
