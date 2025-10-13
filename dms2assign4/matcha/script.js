@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Provide enough images for hard mode (32 cards = 16 pairs)
   const cardImages = [
-    "dms2assign4/matcha/img/Group 36.png",
+    "img/Group 36.png",
     "img/Group 44.png",
     "img/Group 45.png",
     "img/Group 46.png",
