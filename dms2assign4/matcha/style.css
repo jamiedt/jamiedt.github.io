@@ -88,8 +88,7 @@ button:hover {
 /* ... previous styles remain unchanged ... */
 
 .card-front {
-  background: transparent url("dms2assign4/matcha/img/back.png") center/cover
-    no-repeat;
+  background: transparent url("img/back.png") center/cover no-repeat;
   transition: transform 0.2s;
 }
 
@@ -140,9 +139,7 @@ button:hover {
 }
 
 .card-front {
-  background: #ffffff00
-    url("/Users/jamietall/Documents/GitHub/jamiedt.github.io/dms2assign4/matcha/img/back.png")
-    center/cover no-repeat;
+  background: #ffffff00 url("img/back.png") center/cover no-repeat;
 }
 
 .card-back {
@@ -154,6 +151,9 @@ button:hover {
 }
 
 .card-back img {
+  opacity: 1 !important;
+  visibility: visible !important;
+
   width: 100%;
   height: 100%;
   object-fit: cover;
