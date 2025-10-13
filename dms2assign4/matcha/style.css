@@ -7,6 +7,7 @@ body {
   justify-content: flex-start;
   min-height: 100vh;
   margin: 0;
+  font-size: 1.4rem;
   color: #fff;
   text-align: center;
   padding-top: 20px;
@@ -24,8 +25,8 @@ h1 {
 button {
   font-family: "Lexend", system-ui;
   margin: 8px;
-  padding: 20px 40px;
-  font-size: 1.3rem;
+  padding: 15px 30px;
+  font-size: 1.6rem;
   border: none;
   border-radius: 150px;
   background: #ffbb00;
@@ -164,4 +165,35 @@ button:hover {
 
 .controls {
   margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  #title-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #title-screen p {
+    margin-bottom: 10px;
+  }
+
+  .mode-btn {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  #game-board {
+    width: 100vw; /* full width */
+    max-width: none;
+    gap: 4px; /* smaller gaps so cards fit nicely */
+    margin: 10; /* remove side margins */
+    padding: 5px 0 10px;
+  }
+
+  .card {
+    max-height: none; /* allow taller cards */
+  }
 }

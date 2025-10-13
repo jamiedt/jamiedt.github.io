@@ -45,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
     currentCols = cols;
     currentRows = rows;
 
+    // Swap columns and rows if on a small/mobile screen
+    if (window.innerWidth < 768) {
+      const temp = cols;
+      cols = rows;
+      rows = temp;
+    }
+
     titleScreen.style.display = "none";
     gameScreen.style.display = "block";
 
@@ -90,9 +97,51 @@ document.addEventListener("DOMContentLoaded", () => {
       inner.appendChild(back);
       card.appendChild(inner);
 
-      card.addEventListener("click", flipCard);
+      // Add to board (hidden initially)
       board.appendChild(card);
     });
+    // Disable interactions during animation
+    board.style.pointerEvents = "none";
+
+    function animateCardsRipple() {
+      const cardElements = Array.from(board.querySelectorAll(".card"));
+
+      // Disable board and buttons
+      board.style.pointerEvents = "none";
+      restartBtn.disabled = true;
+      backBtn.disabled = true;
+      cardElements.forEach((c) => (c.style.pointerEvents = "none"));
+
+      // Reset cards for animation
+      cardElements.forEach((c) => {
+        c.classList.remove("loaded", "flipped", "matched");
+        c.style.opacity = 0;
+        c.style.transform = "scale(0.5) rotateY(90deg)";
+      });
+
+      // Animate column by column
+      for (let col = 0; col < currentCols; col++) {
+        const colCards = [];
+        for (let row = 0; row < currentRows; row++) {
+          const index = row * currentCols + col;
+          colCards.push(cardElements[index]);
+        }
+
+        setTimeout(() => {
+          colCards.forEach((card) => card.classList.add("loaded"));
+        }, col * 150); // 150ms between columns
+      }
+
+      // Re-enable interactions after last column animates
+      setTimeout(() => {
+        board.style.pointerEvents = "auto";
+        restartBtn.disabled = false;
+        backBtn.disabled = false;
+        cardElements.forEach((c) => (c.style.pointerEvents = "auto"));
+      }, currentCols * 150 + 600); // 600ms = duration of card animation
+    }
+
+    animateCardsRipple();
   }
 
   function flipCard(e) {
