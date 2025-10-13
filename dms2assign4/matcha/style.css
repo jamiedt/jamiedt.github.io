@@ -140,7 +140,8 @@ button:hover {
 }
 
 .card-front {
-  background: #ffffff00 url("img/back.png") center/cover no-repeat;
+  background: #ffffff00 url("dms2assign4/matcha/img/back.png") center/cover
+    no-repeat;
 }
 
 .card-back {
