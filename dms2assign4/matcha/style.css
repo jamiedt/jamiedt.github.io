@@ -166,18 +166,29 @@ button:hover {
 }
 
 .controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
   margin-top: 15px;
 }
 
 @media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    width: 100vw;
+    overflow-x: hidden; /* prevent horizontal scroll */
+  }
+
+  /* TITLE SCREEN */
   #title-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 
   #title-screen p {
@@ -188,18 +199,71 @@ button:hover {
     display: block;
     width: 80%;
     max-width: 300px;
-    margin: 10px 0;
+    margin: 10px auto;
+  }
+
+  /* GAME SCREEN */
+   #game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center board vertically */
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 0; /* remove top padding */
+    margin: 0;
+    box-sizing: border-box;
   }
 
   #game-board {
-    width: 90vw; /* full width */
-    max-width: none;
-    gap: 4px; /* smaller gaps so cards fit nicely */
-    margin: 10; /* remove side margins */
-    padding: 0px 0 0px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: auto;
+    gap: 4px;
+    margin: 0 auto;
+    grid-template-rows: repeat(var(--rows), 1fr);
+    flex-grow: 0; /* prevent stretching */
+  }
   }
 
   .card {
-    max-height: none; /* allow taller cards */
+    width: 100%;
+    max-width: calc(95vw / var(--cols)); /* ensures grid fits screen */
+    height: auto;
   }
+
+  .controls {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  #win-message {
+    margin-top: 10px;
+  }
+}
+
+/* Fade transition between screens */
+#title-screen,
+#game-screen {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#title-screen.active,
+#game-screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Optional: prevent any flash of content */
+body {
+  overflow-x: hidden;
 }
