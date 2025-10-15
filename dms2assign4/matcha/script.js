@@ -33,8 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCols = 0;
   let currentRows = 0;
 
-  titleScreen.classList.add("active");
-
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -54,8 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
       rows = temp;
     }
 
-    titleScreen.classList.remove("active");
-    gameScreen.classList.add("active");
+    titleScreen.style.display = "none";
+    board.offsetHeight;
+    gameScreen.style.display = "block";
 
     board.innerHTML = "";
     winMessage.style.display = "none";
@@ -154,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   backBtn.addEventListener("click", () => {
-    gameScreen.classList.remove("active");
-    titleScreen.classList.add("active");
+    gameScreen.style.display = "none";
+    titleScreen.style.display = "block";
   });
 });
