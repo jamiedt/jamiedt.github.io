@@ -170,50 +170,44 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+  html,
   body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-    width: 100vw;
-    overflow-x: hidden; /* prevent horizontal scroll */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* stops side scroll */
+    background-color: #4c348e;
   }
 
-  /* TITLE SCREEN */
+  /* ---- TITLE SCREEN ---- */
   #title-screen {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100dvh;
     width: 100%;
-    margin: 0 auto;
     text-align: center;
-  }
-
-  #title-screen p {
-    margin-bottom: 10px;
   }
 
   .mode-btn {
     display: block;
     width: 80%;
     max-width: 300px;
-    margin: 10px auto;
+    margin: 8px auto;
   }
 
-  /* GAME SCREEN */
-   #game-screen {
+  /* ---- GAME SCREEN ---- */
+  #game-screen {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* stack vertically */
     align-items: center;
-    justify-content: center; /* Center board vertically */
+    justify-content: space-between; /* board in middle, buttons below */
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    padding: 0; /* remove top padding */
-    margin: 0;
     box-sizing: border-box;
+    padding: 10px 0;
   }
 
   #game-board {
@@ -221,49 +215,31 @@ button:hover {
     justify-content: center;
     align-items: center;
     width: 90vw;
-    height: auto;
-    gap: 4px;
-    margin: 0 auto;
+    gap: 6px;
     grid-template-rows: repeat(var(--rows), 1fr);
-    flex-grow: 0; /* prevent stretching */
-  }
+    margin: 0 auto;
   }
 
   .card {
     width: 100%;
-    max-width: calc(95vw / var(--cols)); /* ensures grid fits screen */
+    aspect-ratio: 338.9 / 435.8;
     height: auto;
+    max-height: calc((100dvh - 140px) / var(--rows)); /* fits vertically */
   }
 
+  /* ---- CONTROLS ---- */
   .controls {
-    margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* stack Restart + Back vertically */
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    margin-top: 10px;
+    flex-shrink: 0;
     width: 100%;
   }
 
   #win-message {
-    margin-top: 10px;
+    margin-bottom: 8px;
   }
-}
-
-/* Fade transition between screens */
-#title-screen,
-#game-screen {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-#title-screen.active,
-#game-screen.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Optional: prevent any flash of content */
-body {
-  overflow-x: hidden;
 }
