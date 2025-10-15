@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     titleScreen.style.display = "none";
-    gameScreen.style.display = "block";
+    gameScreen.style.display = "flex";
 
     board.innerHTML = "";
     winMessage.style.display = "none";
