@@ -168,3 +168,7 @@ button:hover {
 .controls {
   margin-top: 15px;
 }
+
+#game-screen {
+  display: none; /* hidden until a mode is clicked */
+}
