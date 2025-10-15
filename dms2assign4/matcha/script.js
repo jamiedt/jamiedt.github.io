@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCols = 0;
   let currentRows = 0;
 
+  board.offsetHeight;
   gameScreen.style.display = "none";
+  board.offsetHeight;
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
