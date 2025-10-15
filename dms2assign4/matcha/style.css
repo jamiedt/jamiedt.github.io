@@ -171,4 +171,6 @@ button:hover {
 
 #game-screen {
   display: none; /* hidden until a mode is clicked */
+
+  height: 100vh;
 }
