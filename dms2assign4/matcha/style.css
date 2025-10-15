@@ -188,7 +188,7 @@ button:hover {
   }
 
   #game-board {
-    width: 60vw; /* full width */
+    width: 80vw; /* full width */
     max-width: none;
     gap: 4px; /* smaller gaps so cards fit nicely */
     margin: 10; /* remove side margins */
