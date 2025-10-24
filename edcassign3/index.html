@@ -44,7 +44,6 @@
         object-fit: cover;
         z-index: 2;
         clip-path: circle(0px at 0 0);
-        transition: clip-path 0.05s ease-out;
       }
 
       /* Optional: hide default cursor for a clean effect */
@@ -61,7 +60,7 @@
         height: 150px;
         border-radius: 50%;
         pointer-events: none;
-        border: 3px solid rgba(255, 255, 255, 0.5);
+        border: 5px solid rgb(255, 255, 255);
         transform: translate(-50%, -50%);
         z-index: 999;
         mix-blend-mode: difference;
@@ -71,10 +70,10 @@
   <body>
     <div class="container">
       <!-- Bottom (revealed) image -->
-      <img src="image2.png" class="image-under" alt="Under Image" />
+      <img src="image1.png" class="image-under" alt="Under Image" />
 
       <!-- Top image with cutout following cursor -->
-      <img src="image1.png" class="image-top" alt="Top Image" />
+      <img src="image2.png" class="image-top" alt="Top Image" />
 
       <!-- Custom cursor -->
       <div class="cursor"></div>
