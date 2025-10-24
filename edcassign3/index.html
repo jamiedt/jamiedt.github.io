@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Reveal Effect</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        background: black;
+      }
+
+      /* Container that holds both images */
+      .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* The bottom image (revealed) */
+      .image-under {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+
+      /* The top image (hidden layer with clip-path) */
+      .image-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 2;
+        clip-path: circle(0px at 0 0);
+        transition: clip-path 0.05s ease-out;
+      }
+
+      /* Optional: hide default cursor for a clean effect */
+      body {
+        cursor: none;
+      }
+
+      /* Custom cursor overlay */
+      .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px; /* circle size */
+        height: 150px;
+        border-radius: 50%;
+        pointer-events: none;
+        border: 3px solid rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        mix-blend-mode: difference;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Bottom (revealed) image -->
+      <img src="image2.png" class="image-under" alt="Under Image" />
+
+      <!-- Top image with cutout following cursor -->
+      <img src="image1.png" class="image-top" alt="Top Image" />
+
+      <!-- Custom cursor -->
+      <div class="cursor"></div>
+    </div>
+
+    <script>
+      const topImage = document.querySelector(".image-top");
+      const cursor = document.querySelector(".cursor");
+      const circleRadius = 150; // same as cursor size
+
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // move custom cursor
+        cursor.style.left = `${x}px`;
+        cursor.style.top = `${y}px`;
+
+        // update reveal circle on top image
+        topImage.style.clipPath = `circle(${
+          circleRadius / 2
+        }px at ${x}px ${y}px)`;
+      });
+    </script>
+  </body>
+</html>
